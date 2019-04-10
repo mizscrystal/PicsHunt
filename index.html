@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>PicsHunt - Image Search App</title>
+  <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div ng-app="myApp" ng-controller="myCtrl">
+  
+  <div class="form-wrapper">
+    <h1>PicsHunt Image Search</h1>
+    <form action="#" role="search" name="myForm" image-search validate> 
+      <label for="search" class="visually-hidden">Search the site</label>
+      <span class="hint" aria-hidden="true">Find</span>
+      <input type="text" name="search" id="search" placeholder="laptop" required>
+      <button>Search</button>
+      <span class="error" ng-show="myForm.input.$error.required">Required!</span>
+      <p>{{myForm.input.$valid}}</p>
+    </form>
+  </div>
+  <div class="search-results" aria-live="polite" aria-atomic="true" aria-label="Image search results">
+    <ul>
+      <li ng-show="noResults" class="no-results">No Results</li>
+      <li ng-repeat="image in searchedImages">
+        <a href="{{image.src.large}}">
+          <img ng-src="{{image.src.original}}" alt="">
+          <span class="visually-hidden">Image source {{image.src.url}} image id {{image.src.id}}</span>
+        </a>
+        <a href="{{image.photographer_url}}" style="text-decoration: none;"><p align="center" style="color: #FFF;">{{image.photographer}}</p></a>
+    </ul>
+   
+  </div>
+  
+</div>
+
+<a href="#" class="previous">&laquo; Previous</a>
+<a href="#" class="next">Next &raquo;</a>
+
+<div id="overlay"></div>
+  <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+</body>
+
+</html>
